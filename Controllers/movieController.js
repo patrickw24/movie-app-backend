@@ -45,3 +45,55 @@ export const postMovie = async (req, res) => {
     
 
 }
+
+export const putMovie = async (req,res)=>{
+
+    const movie_id= req.params.id
+    const tmp= req.body
+
+    if (!tmp.title){
+        res.status(300).json({message: "Field title is empty"})
+        return 
+    }
+
+    if (!tmp.release_year){
+        res.status(300).json({message: "Field release_year is empty"})
+        return
+    }
+
+    if (!tmp.genre){
+        res.status(300).json({message: "Field genre is empty"})
+        return
+    }
+
+    if (!tmp.duration){
+        res.status(300).json({message: "Field duration is empty"})
+        return
+    }
+
+    try{
+    const arr= [tmp.title, tmp.release_year, tmp.genre, tmp.duration, movie_id]
+    const sql= `update movie
+                set title= $1,
+                release_year= $2,
+                genre= $3,
+                duration= $4
+                where movie_id = $5`
+
+    const result= db.query(sql,arr)
+    res.json({message: "Movie Updated"})
+    }catch(err){
+        res.status(500).json({message: err})
+    }
+
+}
+
+export const deleteMovie = async (req,res)=>{
+
+    const movie_id= req.params.id
+    const sql= `delete from movie where movie_id= $1`
+    const arr= [movie_id]
+    const result = await db.query(sql, arr)
+
+    res.json({message: "Movie Deleted"})
+}

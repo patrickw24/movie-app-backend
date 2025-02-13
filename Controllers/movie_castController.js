@@ -44,17 +44,38 @@ export const postCast = async (req, res) => {
 export const putCast = async (req, res) => {
     const movie_cast_id = req.params.id
     const tmp = req.body
-    const arr = [tmp.movie_id, tmp.actor_id, tmp.role, movie_cast_id]
 
-    const sql = ` update movie_cast
-                 set movie_id = $1, 
-                    actor_id = $2,
-                    role= $3
-                    where movie_cast_id= $4`
+    if (!tmp.movie_id){
+        res.status(300).json({message: "Field movie_id is empty"})
+        return 
+    }
 
-    const resul = db.query(sql, arr)
+    if (!tmp.actor_id){
+        res.status(300).json({message: "Field actor_id is empty"})
+        return
+    }
 
-    res.json({ message: "Cast Updated" })
+    if (!tmp.role){
+        res.status(300).json({message: "Field role is empty"})
+        return
+    }
+
+
+    try{
+        const arr = [tmp.movie_id, tmp.actor_id, tmp.role, movie_cast_id]
+
+        const sql = ` update movie_cast
+                     set movie_id = $1, 
+                        actor_id = $2,
+                        role= $3
+                        where movie_cast_id= $4`
+    
+        const result = db.query(sql, arr)
+    
+        res.json({ message: "Cast Updated" })
+    }catch(err){
+        res.status(500).json({message: err})
+    }
 
 }
 
@@ -64,7 +85,7 @@ export const deleteCast = async (req, res) => {
     const sql = `delete from clients where movie_cast_id = $1`
     const arr = [movie_cast_id]
 
-    const resul = await db.query(sql, arr)
+    const result = await db.query(sql, arr)
 
     res.json({ message: "Cast Deleted" })
 

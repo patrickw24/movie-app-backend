@@ -22,8 +22,13 @@ export const postEarnings = async (req, res) => {
         return
     }
 
+    if (!tmp.country){
+        res.status(300).json({message: "Field country is empty"})
+        return
+    }
+
     try{
-        const str = 'insert into earnings (movie_id, country, revenue) values ($1, $2, $3)'
+        const str = `insert into earnings (movie_id, country, revenue) values ($1, $2, $3)`
         const arr = [tmp.movie_id, tmp.country, tmp.revenue ]
         const result = await db.query(str, arr)
         res.status(200).json({ message: "Earnings Added" })
@@ -38,27 +43,48 @@ export const postEarnings = async (req, res) => {
 export const putEarnings  = async (req, res) => {
     const earnings_ID = req.params.id
     const tmp = req.body
-    const arr = [tmp.movie_id, tmp.country, tmp.revenue, earnings_ID ]
 
-    const sql = ` update earnings
-                 set movie_id = $1, 
-                    country = $2,
-                    revenue= $3
-                    where earnings_ID= $4`
+    if (!tmp.movie_id){
+        res.status(300).json({message: "Field movie_id is empty"})
+        return 
+    }
 
-    const resul = db.query(sql, arr)
+    if (!tmp.revenue){
+        res.status(300).json({message: "Field revenue is empty"})
+        return
+    }
 
-    res.json({ message: "Earnings Updated" })
+    if (!tmp.country){
+        res.status(300).json({message: "Field country is empty"})
+        return
+    }
 
+
+    try{
+        const arr = [tmp.movie_id, tmp.country, tmp.revenue, earnings_ID ]
+
+        const sql = ` update earnings
+                     set movie_id = $1, 
+                        country = $2,
+                        revenue= $3
+                        where earnings_ID= $4`
+    
+        const result = db.query(sql, arr)
+    
+        res.json({ message: "Earnings Updated" })
+
+    }catch(err){
+        res.status(500).json({message: err})
+    }
 }
 
-export const deleteClient = async (req, res) => {
+export const deleteEarnings = async (req, res) => {
 
     const earnings_ID = req.params.id
     const sql = `delete from earnings where earnings_ID = $1`
     const arr = [earnings_ID]
 
-    const resul = await db.query(sql, arr)
+    const result = await db.query(sql, arr)
 
     res.json({ message: "Earnings Deleted" })
 
