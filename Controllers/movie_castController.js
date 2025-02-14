@@ -82,7 +82,7 @@ export const putCast = async (req, res) => {
 export const deleteCast = async (req, res) => {
 
     const movie_cast_id = req.params.id
-    const sql = `delete from clients where movie_cast_id = $1`
+    const sql = `delete from movie_cast where movie_cast_id = $1`
     const arr = [movie_cast_id]
 
     const result = await db.query(sql, arr)
