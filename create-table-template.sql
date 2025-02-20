@@ -35,3 +35,10 @@ select * from actor
 
 
 insert into actors (name, date_of_birth, nationality) values ('Tom Hanks', '1978-07-20', 'American')
+
+create table Accounts(
+    email varchar(255) PRIMARY KEY,
+    name varchar(100),
+    lastname VARCHAR(100),
+    password VARCHAR(255) NOT NULL
+)
