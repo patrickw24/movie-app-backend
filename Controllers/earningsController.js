@@ -45,17 +45,17 @@ export const putEarnings  = async (req, res) => {
     const tmp = req.body
 
     if (!tmp.movie_id){
-        res.status(300).json({message: "Field movie_id is empty"})
+        res.status(300).json({message: "Field 'Movie ID' is empty"})
         return 
     }
 
     if (!tmp.revenue){
-        res.status(300).json({message: "Field revenue is empty"})
+        res.status(300).json({message: "Field 'Revenue' is empty"})
         return
     }
 
     if (!tmp.country){
-        res.status(300).json({message: "Field country is empty"})
+        res.status(300).json({message: "Field 'Country' is empty"})
         return
     }
 

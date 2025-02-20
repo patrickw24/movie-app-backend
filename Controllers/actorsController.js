@@ -1,7 +1,7 @@
 import { db } from "../db.js";
 
 export const getActors = async (req, res) => {
-  const sql = "select * from actor";
+  const sql = "select name, to_char(date_of_birth,'yyyy-mm-dd') date_of_birth, nationality, actor_id from actor";
   const result = await db.query(sql);
   res.status(200).json(result);
 };
@@ -10,17 +10,17 @@ export const postActors = async (req, res) => {
   const tmp = req.body;
 
   if (!tmp.name) {
-    res.status(300).json({ message: "Field name is empty" });
+    res.status(300).json({ message: "Field 'Name' is empty" });
     return;
   }
 
   if (!tmp.date_of_birth) {
-    res.status(300).json({ message: "Field date_of_birth is empty" });
+    res.status(300).json({ message: "Field 'Date of Birth' is empty" });
     return;
   }
 
   if (!tmp.nationality) {
-    res.status(300).json({ message: "Field nationality is empty" });
+    res.status(300).json({ message: "Field 'Nationality' is empty" });
     return;
   }
 

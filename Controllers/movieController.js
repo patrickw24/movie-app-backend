@@ -52,22 +52,22 @@ export const putMovie = async (req,res)=>{
     const tmp= req.body
 
     if (!tmp.title){
-        res.status(300).json({message: "Field title is empty"})
+        res.status(300).json({message: "Field 'Title' is empty"})
         return 
     }
 
     if (!tmp.release_year){
-        res.status(300).json({message: "Field release_year is empty"})
+        res.status(300).json({message: "Field 'Release Year' is empty"})
         return
     }
 
     if (!tmp.genre){
-        res.status(300).json({message: "Field genre is empty"})
+        res.status(300).json({message: "Field 'Genre' is empty"})
         return
     }
 
     if (!tmp.duration){
-        res.status(300).json({message: "Field duration is empty"})
+        res.status(300).json({message: "Field 'Duration' is empty"})
         return
     }
 
