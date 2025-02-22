@@ -42,3 +42,5 @@ create table Accounts(
     lastname VARCHAR(100),
     password VARCHAR(255) NOT NULL
 )
+
+select a.country, a.movie_id,a.revenue, b.title from earnings a inner join movie b on b.movie_id= a.movie_id

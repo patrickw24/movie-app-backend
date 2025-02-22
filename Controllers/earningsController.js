@@ -2,7 +2,12 @@ import { db } from "../db.js"
 
 export const getEarnings = async  (req, res) => {
 
-    const sql = 'select * from earnings'
+    const sql = `select select a.country,
+     a.movie_id,
+     a.revenue,
+      b.title
+       from earnings a
+        inner join movie b on b.movie_id= a.movie_id`
     const result = await db.query(sql)
     res.status(200).json(result)
 
