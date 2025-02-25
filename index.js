@@ -36,6 +36,10 @@ app.use(movie_cast)
 app.use('/movie', tokenValidation ,movie)
 app.use('/auth', authUser)
 
+app.post('/validateSesion', tokenValidation, (req, res) => {
+    res.json({ message: "Valid Token" })
+})
+
 const port = process.env.PORT || 8080
 
 app.listen(port);
