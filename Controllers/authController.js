@@ -22,7 +22,7 @@ export const logIn= async (req, res)=>{
     const tmp= req.body;
     try{
         const sql= `select email, name from accounts where email = $1 and password= $2`
-        const arr= [tmp.email, tmp.name,tmp.email,tmp.password]
+        const arr= [tmp.email,tmp.password]
         const result = await db.query(sql, arr)
         if (result.length > 0) {
 

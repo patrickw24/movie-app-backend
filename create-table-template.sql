@@ -1,3 +1,4 @@
+-- Active: 1740449710711@@dpg-cuuidui3esus73a8on1g-a.oregon-postgres.render.com@5432@movieappbackend@public
 create table movie (
     movie_id SERIAL PRIMARY KEY,
     title text NOT NULL, 
