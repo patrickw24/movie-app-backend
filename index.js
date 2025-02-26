@@ -6,7 +6,14 @@ import { earnings } from './Routes/earningsRoutes.js'
 import { movie_cast } from './Routes/movie_castRoutes.js'
 import { movie } from './Routes/movieRoutes.js'
 import { authUser } from './Routes/authRoutes.js'
+import jwt from 'jsonwebtoken'
 import cors from 'cors'
+import dotenv from 'dotenv'
+dotenv.config()
+
+
+app.use(cors());
+app.use(express.json());
 
 const tokenValidation =(req, res, next)=>{
 
@@ -29,7 +36,7 @@ const tokenValidation =(req, res, next)=>{
     
 }
 
-app.use(cors())
+
 app.use('/actors', tokenValidation, actor)
 app.use('/earnings', tokenValidation, earnings)
 app.use(movie_cast)

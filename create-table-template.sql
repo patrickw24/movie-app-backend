@@ -45,3 +45,10 @@ create table Accounts(
 )
 
 select a.country, a.movie_id,a.revenue, b.title from earnings a inner join movie b on b.movie_id= a.movie_id
+
+select * from actor
+
+insert into accounts (email, name, lastName, password) 
+        VALUES ('patrick@codex', 'Patrick', 'Warner', 'hello')
+
+        select * from accounts
