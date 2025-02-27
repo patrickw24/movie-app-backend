@@ -14,7 +14,7 @@ dotenv.config()
 
 app.use(cors());
 app.use(express.json());
-
+app.use('/auth', authUser)
 const tokenValidation =(req, res, next)=>{
 
     const authorization = req.headers['authorization']
@@ -37,13 +37,12 @@ const tokenValidation =(req, res, next)=>{
 }
 
 
-app.use('/', tokenValidation, actor)
-app.use('/', tokenValidation, earnings)
-app.use(movie_cast)
-app.use('/', tokenValidation ,movie)
+app.use('/',tokenValidation, actor)
+app.use('/',tokenValidation, earnings)
+app.use('/',tokenValidation, movie)
 app.use('/auth', authUser)
 
-app.post('/validateSesion', tokenValidation, (req, res) => {
+app.post('/validateSesion', (req, res) => {
     res.json({ message: "Valid Token" })
 })
 
