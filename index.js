@@ -22,7 +22,7 @@ const tokenValidation =(req, res, next)=>{
         return res.status(400).json({message : "You need to pass a Token"})
     }
 
-    const token = authorization.replace('Bearer ', '')
+    const token = authorization.replace('Bearer', '')
 
     try {
         const secret = process.env.KEY_SECRET
@@ -37,10 +37,10 @@ const tokenValidation =(req, res, next)=>{
 }
 
 
-app.use('/actors', tokenValidation, actor)
-app.use('/earnings', tokenValidation, earnings)
+app.use('/', tokenValidation, actor)
+app.use('/', tokenValidation, earnings)
 app.use(movie_cast)
-app.use('/movie', tokenValidation ,movie)
+app.use('/', tokenValidation ,movie)
 app.use('/auth', authUser)
 
 app.post('/validateSesion', tokenValidation, (req, res) => {
