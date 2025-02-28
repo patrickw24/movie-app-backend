@@ -89,9 +89,9 @@ export const putEarnings  = async (req, res) => {
 
 export const deleteEarnings = async (req, res) => {
 
-    const earnings_ID = req.params.id
-    const sql = `delete from earnings where earnings_ID = $1`
-    const arr = [earnings_ID]
+    const movie_id = req.params.id
+    const sql = `delete from earnings where movie_id = $1`
+    const arr = [movie_id]
 
     const result = await db.query(sql, arr)
 

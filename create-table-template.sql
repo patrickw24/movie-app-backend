@@ -32,7 +32,8 @@ insert into actor (name, date_of_birth, nationality)
 values ('tom cruise', '07-20-1978', 'american')
 
 
-select * from actor
+select * from earnings
+
 
 
 insert into actors (name, date_of_birth, nationality) values ('Tom Hanks', '1978-07-20', 'American')
@@ -70,3 +71,5 @@ insert into accounts (email, name, lastName, password)
       b.title
        from earnings a
         inner join movie b on b.movie_id= a.movie_id
+
+        select * from movie
