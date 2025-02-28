@@ -3,7 +3,7 @@ import { db } from "../db.js"
 export const getEarnings = async  (req, res) => {
 
     try{
-    const sql = `select select a.country,
+    const sql = `select a.country,
      a.movie_id,
      a.revenue,
       b.title

@@ -54,3 +54,19 @@ insert into accounts (email, name, lastName, password)
         select * from accounts
 
         select * from movie
+
+        select a.country,
+     a.movie_id,
+     a.revenue,
+      b.title
+       from earnings a
+        inner join movie b on b.movie_id= a.movie_id
+
+        insert into earnings (movie_id, country, revenue) values (1, 'USA', 500)
+
+        select a.country,
+     a.movie_id,
+     a.revenue,
+      b.title
+       from earnings a
+        inner join movie b on b.movie_id= a.movie_id
