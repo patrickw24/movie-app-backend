@@ -4,7 +4,7 @@ actor.use(express.json())
 import { getActors, postActors, putActor, deleteActor } from '../Controllers/actorsController.js'
 
 
-actor.get('/actor', getActors)
-actor.post('/actor', postActors)
-actor.put('/actor/:id', putActor)
-actor.delete('/actor/:id', deleteActor)
+actor.get('/', getActors)
+actor.post('/', postActors)
+actor.put('/:id', putActor)
+actor.delete('/:id', deleteActor)

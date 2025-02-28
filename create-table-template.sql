@@ -52,3 +52,5 @@ insert into accounts (email, name, lastName, password)
         VALUES ('patrick@codex', 'Patrick', 'Warner', 'hello')
 
         select * from accounts
+
+        select * from movie

@@ -4,7 +4,7 @@ movie.use(express.json())
 import { getMovie, putMovie, postMovie, deleteMovie } from '../Controllers/movieController.js'
 
 
-movie.get('/movie', getMovie)
-movie.post('/movie', postMovie)
-movie.put('/movie/:id', putMovie)
-movie.delete('/movie/:id', deleteMovie)
+movie.get('/', getMovie)
+movie.post('/', postMovie)
+movie.put('/:id', putMovie)
+movie.delete('/:id', deleteMovie)
