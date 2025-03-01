@@ -31,7 +31,7 @@ const tokenValidation =(req, res, next)=>{
         next()
     }catch(err){
         return res.status(400).json({message : "Invalid Token"})
-        window.location.href="/"
+        
     }
     
 
