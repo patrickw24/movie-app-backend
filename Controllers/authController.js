@@ -5,6 +5,7 @@ dotenv.config()
 
 export const signIn = async (req, res) => {
     const tmp= req.body;
+
     try{
         const sql= `insert into accounts (email, name, lastName, password) 
         VALUES ($1, $2, $3, $4)`

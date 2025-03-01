@@ -72,4 +72,4 @@ insert into accounts (email, name, lastName, password)
        from earnings a
         inner join movie b on b.movie_id= a.movie_id
 
-        select * from movie
+        select * from accounts
